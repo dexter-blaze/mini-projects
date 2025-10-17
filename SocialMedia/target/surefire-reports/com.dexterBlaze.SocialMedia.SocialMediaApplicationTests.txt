@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.dexterBlaze.SocialMedia.SocialMediaApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.026 s -- in com.dexterBlaze.SocialMedia.SocialMediaApplicationTests
