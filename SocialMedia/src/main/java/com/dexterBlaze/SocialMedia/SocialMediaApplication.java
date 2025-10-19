@@ -9,23 +9,30 @@ import java.util.Scanner;
 //@SpringBootApplication
 public class SocialMediaApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 //		SpringApplication.run(SocialMediaApplication.class, args);
         //get the context from xml file
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        User user = (User) context.getBean("simpleUser");
         //prompt the user that app has started
         System.out.println("Social Media App! Started...");
 
         //setup scanner - to take user input
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter the username:");
+        user.setUserName(scanner.next());
+
         /* if you think about a social media website/app you can keep looking/posting the posts until you decide
         to close the application - replicate this behaviour using infinite loop ( while more efficient than for ) */
         while(true) {
             //fetch a postList
-            PostList postList = (PostList) context.getBean("simplePostList");
+//            PostList postList = (PostList) context.getBean("simplePostList");
+
+            //getting the postlist from the user
+            PostList postList = user.getPostList();
             //prints the reference of postList
-            System.out.println("Ref of postList :" + postList.toString());
+            System.out.println("Ref of postList : @" + postList.toString().split("@")[1]);
 
             //prompting to user for different selection
             System.out.println("1. Make new post\n2. Show all post\n3. Exit");
@@ -49,8 +56,8 @@ public class SocialMediaApplication {
                     System.out.println("All the posts by user:");
                     //rendering the posts
                     for (int i = 0; i < postList.size(); i++) {
-                        System.out.println("Ref of post " + i + " :" + postList.getPost(i).toString());
-                        System.out.println(i + ". " + postList.getPost(i).getMessage());
+                        System.out.println("Ref of post " + i + " : @" + postList.getPost(i).toString().split("@")[1]);
+                        System.out.println("@" + user.getUserName()+ " " + i + ". " + postList.getPost(i).getMessage());
                     }
                     break;
                 }
@@ -65,5 +72,5 @@ public class SocialMediaApplication {
                 }
             }
         }
-	}
+    }
 }
