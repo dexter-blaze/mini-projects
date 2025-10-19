@@ -5,11 +5,13 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="simplePostList" class="com.dexterBlaze.SocialMedia.SimplePostList" scope="singleton"/>
-    <bean id="simplePost" class="com.dexterBlaze.SocialMedia.SimplePost" scope="prototype"/>
-    <bean id="simpleUser" class="com.dexterBlaze.SocialMedia.SimpleUser" scope="prototype">
+    <bean id="simplePostList" class="com.dexterBlaze.SocialMedia.SimplePostList" scope="singleton" init-method="init"
+        destroy-method="destroy"/>
+    <bean id="simplePost" class="com.dexterBlaze.SocialMedia.SimplePost" scope="prototype" init-method="init"
+        destroy-method="destroy"/>
+    <bean id="simpleUser" class="com.dexterBlaze.SocialMedia.SimpleUser" scope="prototype" init-method="init"
+        destroy-method="destroy">
         <!-- ref is the value we want this bean to take for the setter method -->
         <property name="postList" ref="simplePostList"/>
     </bean>
-
 </beans>

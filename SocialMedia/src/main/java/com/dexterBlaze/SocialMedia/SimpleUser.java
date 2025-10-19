@@ -6,6 +6,14 @@ public class SimpleUser implements User{
     //dependency
     public PostList postList; //instance variable to store our post list.
 
+    public void init() {
+        System.out.println(this.getClass().getSimpleName());
+    }
+
+    //creating the destroy method:
+    public void destroy () {
+        System.out.println(this.getClass().getSimpleName() + " destroyed");
+    }
     //setter method DI
     @Override
     public void setPostList(PostList postList) {

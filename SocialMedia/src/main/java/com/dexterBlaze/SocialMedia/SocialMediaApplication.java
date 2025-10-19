@@ -29,7 +29,7 @@ public class SocialMediaApplication {
             //fetch a postList
 //            PostList postList = (PostList) context.getBean("simplePostList");
 
-            //getting the postlist from the user
+            //getting the postList from the user
             PostList postList = user.getPostList();
             //prints the reference of postList
             System.out.println("Ref of postList : @" + postList.toString().split("@")[1]);
@@ -63,11 +63,15 @@ public class SocialMediaApplication {
                 }
                 case 3 -> {
                     System.out.println("Exiting...");
+                    scanner.close();
+                    context.close();
                     return;
 
                 }
                 default -> {
                     System.out.println("Invalid choice");
+                    scanner.close();
+                    context.close();
                     return;
                 }
             }
