@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- dependency beans definitions -->
+    <bean id="Health" class="com.dexterBlaze.CoverMate.HealthInsurance"/>
+    <bean id="Term" class="com.dexterBlaze.CoverMate.TermInsurance"/>
+    <!-- bean definitions here -->
+    <bean id="customerHealth" class="com.dexterBlaze.CoverMate.Customer">
+        <property name="insurance" ref="healthInsurance"/>
+    </bean>
+    <bean id="customerTerm" class="com.dexterBlaze.CoverMate.Customer">
+        <property name="insurance" ref="termInsurance"/>
+    </bean>
+
+</beans>
