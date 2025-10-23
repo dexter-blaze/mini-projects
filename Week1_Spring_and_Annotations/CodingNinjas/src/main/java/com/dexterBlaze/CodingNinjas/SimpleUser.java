@@ -1,5 +1,8 @@
 package com.dexterBlaze.CodingNinjas;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SimpleUser implements User{
     public String name;
     public String age;
