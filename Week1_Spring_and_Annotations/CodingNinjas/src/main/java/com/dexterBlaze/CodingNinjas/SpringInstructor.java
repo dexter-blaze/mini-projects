@@ -1,5 +1,8 @@
 package com.dexterBlaze.CodingNinjas;
 
+import org.springframework.stereotype.Component;
+
+@Component("springInstructor")
 public class SpringInstructor implements Instructor{
     public String name;
     public String age;

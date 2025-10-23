@@ -1,7 +1,10 @@
 package com.dexterBlaze.CodingNinjas;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class SimpleUserList implements UserList{
     List<User> listOfUsers;
 

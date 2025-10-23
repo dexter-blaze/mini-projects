@@ -32,9 +32,13 @@ public class CodingNinjasApplication {
         System.out.println("Please enter your location");
         String location = scanner.nextLine();
 
-        Instructor javaInstructor = context.getBean(JavaInstructor.class);
-        javaInstructor.setInstructorDetails("abhee", "21");
-        javaInstructor.takeClass();
+//        Instructor javaInstructor = context.getBean(JavaInstructor.class);
+//        javaInstructor.setInstructorDetails("abhee", "21");
+//        javaInstructor.takeClass();
+
+        Course course = context.getBean(PaidCourse.class);
+        course.setCourseDetails("This is a test course.");
+        System.out.println(course.getCourseName());
 //		SpringApplication.run(CodingNinjasApplication.class, args);
 //        System.out.println("Welcome to Coding Ninjas application");
 //        // getting context from xml

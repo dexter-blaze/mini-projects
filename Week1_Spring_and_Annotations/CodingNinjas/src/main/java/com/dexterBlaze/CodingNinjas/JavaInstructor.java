@@ -2,7 +2,7 @@ package com.dexterBlaze.CodingNinjas;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component("javaInstructor")
 public class JavaInstructor implements Instructor{
     public String name;
     public String age;

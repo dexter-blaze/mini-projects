@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Component("rice")
+@Component
 public class Rice implements Ingredients {
     private boolean isChinese;
     private boolean isNorthIndian;

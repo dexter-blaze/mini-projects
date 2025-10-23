@@ -5,43 +5,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import javax.sound.midi.Receiver;
 import java.util.Scanner;
 
 @SpringBootApplication
 public class TastyTroveApplication {
-    @Autowired
-    @Qualifier("wheat")
-    Chinese chineseWheat;
-    @Autowired
-    @Qualifier("lentils")
-    Chinese chineseLentils;
-    @Autowired
-    @Qualifier("rice")
-    Chinese chineseRice;
-
-    @Autowired
-    @Qualifier("wheat")
-    NorthIndian northIndianWheat;
-    @Autowired
-    @Qualifier("lentils")
-    NorthIndian northIndianLentils;
-    @Autowired
-    @Qualifier("rice")
-    NorthIndian northIndianRice;
-
-    @Autowired
-    @Qualifier("wheat")
-    SouthIndian southIndianWheat;
-    @Autowired
-    @Qualifier("lentils")
-    SouthIndian southIndianLentils;
-    @Autowired
-    @Qualifier("rice")
-    SouthIndian southIndianRice;
-
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("package com.example.TastyTrove");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.example.TastyTrove");
 //		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		System.out.println("Welcome to Tasty Trove Application");
 
@@ -67,6 +39,9 @@ public class TastyTroveApplication {
 				System.exit(0);
 			}
 		}
+
+        Recipe recipe = (Recipe) context.getBean(recipeType);
+
 		// Ingredient Selection
 		String ingredientType = "";
 		System.out.println("Select Ingredient:");
@@ -85,9 +60,11 @@ public class TastyTroveApplication {
 			}
 		}
 
-		Recipe myRecipe = context.getBean(recipeType + ingredientType);
-		myRecipe.setUserName(name);
-		myRecipe.getDetails();
-	}
 
+		recipe.setIngredients(ingredientType);
+        recipe.setUserName(name);
+        recipe.getDetails();
+        context.close();
+        scanner.close();
+	}
 }
