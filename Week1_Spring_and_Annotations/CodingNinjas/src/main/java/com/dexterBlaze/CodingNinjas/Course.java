@@ -5,4 +5,5 @@ public interface Course {
     UserList getUserList();
     Instructor getInstructor();
     String getCourseName();
+    void setInstructor(String courseInstructor);
 }

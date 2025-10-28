@@ -1,0 +1,8 @@
+#checking whether our .yml file is working by changing the port and running the application
+server:
+  port: 8089
+spring:
+ mvc:
+  view:
+   prefix: "WEB-INF/jsp/"
+   suffix: ".jsp"

@@ -1,8 +1,10 @@
 package com.dexterBlaze.CodingNinjas;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class SimpleUser implements User{
     public String name;
     public String age;
