@@ -17,9 +17,13 @@ public class StudentUserService implements UserService{
 
     //we'd want to create a user domain object with all its attribute values and save that object
     @Override
-    public boolean signUp(String name, String gender, String location, String college) {
+    public int signUp(String name, String gender, String location, String college) {
         boolean isStudentCreated = studentUser.createUser(name, gender, location, college);
-        studentUser.saveUser();
-        return isStudentCreated;
+        if(isStudentCreated) {
+            return studentUser.saveUser();
+        } else {
+            return -1;
+        }
+//        return isStudentCreated;
     }
 }

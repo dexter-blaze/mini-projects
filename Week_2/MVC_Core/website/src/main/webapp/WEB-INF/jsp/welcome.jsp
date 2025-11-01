@@ -1,4 +1,5 @@
 <html>
 <h1>Thank you, you are now a member</h1>
-<a href="/support?id=7">Contact Support</a>
+<%--we removed the static userId and now made this link dynamic--%>
+<a href="/support?id=${userId}">Contact Support</a>
 </html>

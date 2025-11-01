@@ -28,7 +28,7 @@ public class SupportController {
         //basically we passing the reference to the instance variable message
         //we are sending data to the jsp here
 //        uiModel.addAttribute("message", finalUserMessage);
-        String name = userCheckService.checkUser(Integer.parseInt(id) - 1);
+        String name = userCheckService.checkUser(Integer.parseInt(id));
         map.addAttribute("message", "Hi, welcome to support page "+ name);
         return "support";
     }
