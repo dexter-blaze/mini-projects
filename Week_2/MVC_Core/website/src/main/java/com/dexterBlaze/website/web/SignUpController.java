@@ -8,9 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 public class SignUpController {
@@ -44,6 +48,30 @@ public class SignUpController {
     @RequestMapping("/welcome")
     public String showWelcomePage(@RequestParam("id") String userId, ModelMap map) {
         map.addAttribute("userId", userId);
-        return "welcome";
+        return "welcome"; // called returning a view
     }
+
+    @RequestMapping("/instructors")
+    public String showInstructors(ModelMap map) {
+        //creating a instructor
+        HashMap<String, Object> instructor = new HashMap<>();
+        instructor.put("name", "Abhishek Kr Singh");
+        instructor.put("age", 25);
+        instructor.put("id", 243); //which we will fetch from the next page
+
+        //creating an arraylist to store the instructors
+        ArrayList<HashMap<String, Object>> listOfInstructors = new ArrayList<>();
+        listOfInstructors.add(instructor);
+
+        //sending arraylist to jsp
+        map.addAttribute("instructors", listOfInstructors);
+        return "instructors";
+    }
+
+    @RequestMapping("/profile/{profileID}")
+    public String getPathVariable(@PathVariable("profileID") String profileID, ModelMap map) {
+        map.addAttribute("profileID", profileID);
+        return "profile";
+    }
+
 }
