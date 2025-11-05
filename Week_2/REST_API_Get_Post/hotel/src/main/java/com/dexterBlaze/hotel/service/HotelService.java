@@ -1,7 +1,9 @@
 package com.dexterBlaze.hotel.service;
 
+import com.dexterBlaze.hotel.exception.HotelNotFoundException;
 import com.dexterBlaze.hotel.model.Hotel;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +22,9 @@ public class HotelService {
     }
 
     public Hotel getHotelById (String hotelId) {
+        if(ObjectUtils.isEmpty(hotelMap.get(hotelId))) {
+            throw new HotelNotFoundException("Hotel NOT FOUND for id: "+hotelId);
+        }
         return hotelMap.get(hotelId);
     }
 
