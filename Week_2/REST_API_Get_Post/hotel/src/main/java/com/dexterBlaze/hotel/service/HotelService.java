@@ -18,4 +18,13 @@ public class HotelService {
         hotelList.add(hotel);
         hotelMap.put(hotel.getId(), hotel);
     }
+
+    public Hotel getHotelById (String hotelId) {
+        return hotelMap.get(hotelId);
+    }
+
+    public List<Hotel> getAllHotels () {
+        return hotelList;
+    }
+
 }

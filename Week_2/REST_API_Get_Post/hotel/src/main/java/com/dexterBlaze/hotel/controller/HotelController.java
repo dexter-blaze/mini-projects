@@ -3,16 +3,28 @@ package com.dexterBlaze.hotel.controller;
 import com.dexterBlaze.hotel.model.Hotel;
 import com.dexterBlaze.hotel.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/hotel")
+import java.util.List;
+
+@RestController
+@RequestMapping("/hotel")
 public class HotelController {
     @Autowired
     HotelService hotelService;
 
     @PostMapping("/create")
-    public void createHotel(Hotel hotel){
+    public void createHotel(@RequestBody Hotel hotel){
         hotelService.createHotel(hotel);
+    }
+
+    @GetMapping("/id/{hotelId}")
+    public Hotel getHotelById(@PathVariable String hotelId) {
+        return hotelService.getHotelById(hotelId);
+    }
+
+    @GetMapping("/get-all")
+    public List<Hotel> getAllHotels() {
+        return hotelService.getAllHotels();
     }
 }

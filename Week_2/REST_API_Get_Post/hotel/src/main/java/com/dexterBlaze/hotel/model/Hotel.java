@@ -2,7 +2,6 @@ package com.dexterBlaze.hotel.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Hotel {
     private String id;
     private String name;
