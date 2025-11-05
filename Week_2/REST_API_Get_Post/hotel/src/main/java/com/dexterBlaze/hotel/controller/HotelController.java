@@ -27,4 +27,16 @@ public class HotelController {
     public List<Hotel> getAllHotels() {
         return hotelService.getAllHotels();
     }
+
+    @DeleteMapping("/remove/id/{hotelId}")
+    public void deleteHotelById(@PathVariable String hotelId) {
+        hotelService.deleteHotelById(hotelId);
+    }
+
+    @PutMapping("/update")
+    //@RequestBody since we have to send the details
+    public void updateHotel(@RequestBody Hotel hotel) {
+        //delegating the work to service
+        hotelService.updateHotel(hotel);
+    }
 }
