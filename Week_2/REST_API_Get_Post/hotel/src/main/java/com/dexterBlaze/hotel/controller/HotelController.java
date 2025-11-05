@@ -2,7 +2,9 @@ package com.dexterBlaze.hotel.controller;
 
 import com.dexterBlaze.hotel.model.Hotel;
 import com.dexterBlaze.hotel.service.HotelService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +16,10 @@ public class HotelController {
     HotelService hotelService;
 
     @PostMapping("/create")
-    public void createHotel(@RequestBody Hotel hotel){
+    public void createHotel(@Valid @RequestBody Hotel hotel, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            throw new RuntimeException("Invalid Request");
+        }
         hotelService.createHotel(hotel);
     }
 

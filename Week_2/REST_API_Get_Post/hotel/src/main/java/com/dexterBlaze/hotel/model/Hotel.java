@@ -1,10 +1,18 @@
 package com.dexterBlaze.hotel.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 public class Hotel {
     private String id;
+
+    @Size(min=3)
     private String name;
+
+    @Min(1)
+    @Max(10)
     private long rating;
     private String city;
 
