@@ -11,7 +11,7 @@ public class SimpleUser implements User{
     }
 
     //creating the destroy method:
-    public void destroy () {
+    public void destroy() {
         System.out.println(this.getClass().getSimpleName() + " destroyed");
     }
     //setter method DI

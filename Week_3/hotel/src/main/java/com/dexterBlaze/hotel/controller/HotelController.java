@@ -40,6 +40,7 @@ public class HotelController {
     }
 
     @PutMapping("/update")
+
     //@RequestBody since we have to send the details
     public void updateHotel(@RequestBody Hotel hotel) {
         //delegating the work to service
