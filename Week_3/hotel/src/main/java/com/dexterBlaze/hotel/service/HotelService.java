@@ -21,8 +21,15 @@ public class HotelService {
     Map<String, Hotel> hotelMap = new HashMap<>();
 
     public void createHotel (Hotel hotel) {
+        //** we will store the rating in the object which is expected by the addRating() method of rating service
+        Map<String, Long> ratingMap = new HashMap<>();
+
         hotelList.add(hotel);
         hotelMap.put(hotel.getId(), hotel);
+
+
+        ratingMap.put(hotel.getId(), hotel.getRating());
+        ratingServiceCommunicator.addRating(ratingMap);
     }
 
     public Hotel getHotelById (String hotelId) {

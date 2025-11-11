@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class RatingServiceCommunicator {
     //creating an instance of RestTemplate
@@ -32,5 +34,11 @@ public class RatingServiceCommunicator {
         Long responseObject = restTemplate.getForObject(url+id, Long.class);
 
         return responseObject;
+    }
+
+    public void addRating(Map<String, Long> ratingMap) {
+        String url ="http://localhost:8081/rating/add";
+
+        restTemplate.postForObject(url, ratingMap, Object.class);
     }
 }
