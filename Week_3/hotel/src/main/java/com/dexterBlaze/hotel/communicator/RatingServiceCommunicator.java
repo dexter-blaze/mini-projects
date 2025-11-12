@@ -5,10 +5,14 @@ package com.dexterBlaze.hotel.communicator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -38,7 +42,12 @@ public class RatingServiceCommunicator {
 
     public void addRating(Map<String, Long> ratingMap) {
         String url ="http://localhost:8081/rating/add";
+        //we wrote the type of HttpEntity here to avoid the warning, when we will be sending headers etc.
+        //we won't mention the type sometimes
+        HttpEntity<Map<String, Long>> requestEntity = new HttpEntity<>(ratingMap);
 
-        restTemplate.postForObject(url, ratingMap, Object.class);
+//        restTemplate.postForObject(url, ratingMap, Object.class);
+        restTemplate.exchange(url, HttpMethod.POST, requestEntity, Object.class);
+
     }
 }
