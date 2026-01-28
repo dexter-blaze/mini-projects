@@ -48,6 +48,5 @@ public class RatingServiceCommunicator {
 
 //        restTemplate.postForObject(url, ratingMap, Object.class);
         restTemplate.exchange(url, HttpMethod.POST, requestEntity, Object.class);
-
     }
 }
